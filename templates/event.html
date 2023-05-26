@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Comon</title>
+  <!-- Core theme CSS (includes Bootstrap)-->
+  <link href="{{ url_for('static', filename='assets/vendor/fontawesome-free/css/all.min.css' )}}" rel="stylesheet" type="text/css">
+      <!-- Bootstrap core JavaScript-->
+      <script src="{{ url_for('static', filename='assets/vendor/jquery/jquery.min.js') }}"></script>
+      <script src="{{ url_for('static', filename='assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <!-- Custom styles for this template-->
+  <link href="{{ url_for('static',filename='css/bootstrap.min.css') }}" rel="stylesheet">
+ <!-- Custom styles for this template-->
+  <link href="{{ url_for('static', filename='css/sb-admin-2.min.css')}}" rel="stylesheet">
+  <!-- Font Awesome icons (free version)-->
+  <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+  <!-- Core theme CSS (includes Bootstrap)-->
+  <link href="static/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <!------ Include the above in your HEAD tag ---------->
+
+  <style>
+    /*-- Media Section-- */
+    *{
+      margin: 0;
+      padding: 0;
+      
+    }
+    .media {
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-align: start;
+      align-items: flex-start;
+    }
+    .media img {
+      width: 48px !important;
+      height: 48px !important;
+      padding: 2px;
+      border: 2px solid #f4f4f4;
+    }
+    .media-body {
+      -ms-flex: 1;
+      flex: 1;
+      padding: .4rem !important;
+    }
+    .media-body p {
+      font-family: 'Rokkitt', serif;
+      font-weight: 500 !important;
+      font-size: 14px;
+      color: #88898a;
+    }
+    .media-body small span {
+      font-family: 'Rokkitt', serif;
+      font-size: 12px;
+      color: #aaa;
+      margin-right: 10px;
+    }
+    /* Cardbox Base
+  ---------------------------------- */
+    .cardbox-base {
+      position: fixed;
+      bottom: 0px;
+      width: 99%;
+      background-color: #efefef;
+      border-bottom: 2px solid #f4f4f4;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+    .cardbox-base ul {
+      margin: 10px 0px 10px 15px!important;
+      padding: 10px !important;
+      font-size: 0px;
+      display: inline-block;
+    }
+    .cardbox-base li {
+      list-style: none;
+      margin: 0px 0px 0px -8px !important;
+      padding: 0px 0px 0px 0px !important;
+      display: inline-block;
+    }
+    .cardbox-base li a i {
+      position: relative;
+      top: 4px;
+      font-size: 16px;
+      color: #8d8d8d;
+      margin-right: 15px;
+    }
+    .cardbox-base li a span {
+      font-family: 'Rokkitt', serif;
+      font-size: 14px;
+      color: #8d8d8d;
+      margin-left: 20px;
+      position: relative;
+      top: 5px;
+    }
+    .cardbox-base li a em {
+      font-family: 'Rokkitt', serif;
+      font-size: 14px;
+      color: #8d8d8d;
+      position: relative;
+      top: 3px;
+    }
+    .cardbox-base li a img {
+      width: 25px;
+      height: 25px;
+      margin: 0px !important;
+      border: 2px solid #fff;
+    }
+
+    /* ------------------------------- */
+    /* Cardbox Comments
+  ---------------------------------- */
+    .cardbox-comments {
+      padding: 7px;
+      font-size: 0px;
+      background-color: #efefef;
+      margin: 0;
+      border-bottom-left-radius: 5px ;
+      border-bottom-right-radius: 5px ;
+
+    }
+    .cardbox-comments .comment-avatar img {
+      margin-top: 1px;
+      margin-right: 10px;
+      position: relative;
+      width: 40px;
+      height: 40px;
+    }
+
+    .search {
+      position: relative;
+
+    }
+    .search input[type="text"] {
+      background-color: #fff;
+      line-height: 10px;
+      padding: 15px 60px 20px 10px;
+      border: 2px solid #f4f4f4;
+      border-radius: 4px;
+      font-family: 'Rokkitt', serif;
+      font-size: 14px;
+      color: #8d8d8d;
+      height: inherit;
+      font-weight: 700;
+    }
+    .post {
+      
+    }
+    .post-content{
+      border: 1px solid #efefef;
+      margin: 0;
+      height: auto;
+      border-radius: 5px;
+      background-color: #efefef;
+      
+    }
+    .comments {
+      border: 1px solid #efefef;
+      margin: 5px 0;
+      height: auto;
+      border-radius: 5px;
+      background-color: #efefef;
+
+    }
+    .coment-profile {
+      border-top-left-radius: 5px ;
+      border-top-right-radius: 5px ;
+      display: flex;
+      align-content: center;
+      background-color:#efefef;
+      width: auto;
+      height: auto;
+    }
+    .contain{
+      margin: 2px;
+      height: 100%;
+      background-color: #B1C6FF;
+    }
+  </style>
+
+</head>
+<body>
+  
+<!-- Begin post Content -->
+<div class="contain">
+  <!-- Illustrations -->
+  <div style=" border-radius:5px;">
+    <div style=" border-top-right-radius:5px; border-top-left-radius:5px; position:sticky; top:1px; background-color:#efefef;">
+      
+      
+      <div class="media m-0" style="overflow:hidden;">
+        <div class="d-flex mr-3">
+          <img class="img-profile rounded-circle"
+          src="{{ url_for('static',filename='assets/profile_img/' + event.poster.profile_pic) }}" style="width:60px;">
+        </a>
+      </div>
+      <div class="media-body">
+        <p >
+          {{ event.poster.username }}
+        </p>
+        <small><span><i class="icon ion-md-pin"></i> Nairobi, Kenya</span></small>
+        <small><span><i class="icon ion-md-time"></i>  {{ event.date_posted }}</span></small>
+      </div>
+
+    </div>
+    <!--/ media -->
+  </div>
+
+<div >
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    
+      {% for category, message in messages %}
+      {% if category == 'error'%}
+      <div class="alert alert-danger alert-dismissable fade show" role="alert">
+              {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="close">
+              <span aria-hidden="true">x</span>
+            </button>
+          </div>
+        {% elif category == 'info' %}
+        <div class="alert alert-info alert-dismissable fade show" role="alert">
+              {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="close">
+              <span aria-hidden="true">x</span>
+            </button>
+          </div>
+          {% else %}
+          <div class="alert alert-success alert-dismissable fade show" role="alert">
+              {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="close">
+              <span aria-hidden="true">x</span>
+            </button>
+          </div>
+          {% endif %}
+          {% endfor %}
+        
+        {% endif %}
+        {% endwith %}
+      </div>
+      
+
+  <div class="card-body">
+    <div class="text-left">
+    <div class="post">
+      {% if event.post_img %} <!-- post image -->
+      <img class="img-fluid px-0 px-sm-1 mt-1 mb-4" style="border-radius:10px; margin:0; display: block; width: 100%;" src="{{ url_for('static',filename='assets/post_img/' + event.post_img) }}">
+
+      {% endif %}
+      <div class="post-content">
+        
+      <p style="">
+        {{ event.content }}
+      </p>
+      </div>
+    </div>
+    </div>
+    <hr>
+    {% for comment in comments %}
+    {% if comment %}
+    <div class="comments">
+      <div class="coment-profile">
+        <img class="img-profile rounded-circle"
+        src="{{ url_for('static',filename='assets/profile_img/' + comment.comenter.profile_pic) }}" style="margin:10px;width:30px; height:30px;">
+        <br>
+        <p style="margin:10px;font-weight:500;">
+          {{comment.comenter.username}}
+        </p>
+      </div>
+      <p style="font-weight:200;margin:10px;">
+        {{comment.content}}
+      </p>
+
+    </div>
+    {% endif %}
+    {% endfor %}
+    <hr class="sidebar-divider">
+  </div>
+
+
+  <!--/ cardbox-base -->
+  <div class="cardbox-base">
+    <ul>
+      <li><a><i class="fas fa-thumbs-up"></i></a></li>
+      {% for like in likes %}
+      <li><a href="#"><img src="{{ url_for('static', filename='assets/profile_img/' + like.liker.profile_pic)}}" class="img-fluid rounded-circle" alt="User"></a></li>
+      {% endfor %}
+      <li><a><span>{{ post.likes|length }} Likes</span></a></li>
+    </ul>
+  <div class="cardbox-comments">
+    <span class=" comment-avatar float-left">
+      <img class="rounded-circle" src="{{ url_for('static',filename='assets/profile_img/' + current_user.profile_pic) }}">
+    </span>
+    <div class="search">
+      <form class="user" action="{{ url_for('post', post_id=post_id) }}" method="POST" enctype="multipart/form-data">
+        <input placeholder="Write a comment" name="content" type="text">
+        <input style="margin:5px;" class="btn btn-primary" type="submit" value="comment">
+      </form>
+    </div>
+  </div>
+  </div>
+  <br>
+    <!--/. cardbox-base -->
+</div>
+</div>
+
+<!-- end of body content -->
+<!-- Bootstrap core JavaScript-->
+<script src="{{ url_for('static',filename=' assets/vendor/jquery/jquery.min.js') }}"></script>
+<script src="{{ url_for('static',filename=' assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }} "></script>
+
+<!-- Core plugin JavaScript-->
+<script src=" {{ url_for('static',filename=' assets/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+
+
+<!-- Custom scripts for all pages-->
+<script src="{{ url_for('static',filename='js/sb-admin-2.min.js') }}"></script>
+
+<!-- Page level plugins -->
+<script src="{{ url_for('static',filename='assets/vendor/chart.js/Chart.min.js') }}"></script>
+
+<!-- Page level custom scripts -->
+<script src="{{ url_for('static',filename='js/demo/chart-area-demo.js ') }}"></script>
+<script src="{{ url_for('static',filename='js/demo/chart-pie-demo.js ') }}"></script>
+
+</body>
+
+</html>
