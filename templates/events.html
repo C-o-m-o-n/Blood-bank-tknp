@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+    <div class="site-wrap" id="home-section">
+
+      <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+          <div class="site-mobile-menu-close mt-3">
+            <span class="icon-close2 js-menu-toggle"></span>
+          </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+      </div>
+
+      <header class="site-navbar site-navbar-target bg-secondary shadow" role="banner">
+        {% include 'navbar.html' %}
+      </header>
+<body>
+<br>
+      <div class=" bg-primary">
+        <div class="row align-items-stretch">
+          <div class="col-md-6">
+            <img src="../static/images/img_1.jpg" alt="Image" class="img-fluid shadow">
+          </div>
+          <div class="col-md-6">
+            <div class="bg-white h-100 p-4 shadow">
+              <h3 class="mb-4 text-cursive">Add a Donation Event</h3>
+    <form action="/add_event" method="POST" enctype="multipart/form-data">
+      <label for="title">Event Title:</label>
+      <div class="form-group">
+        <input type="text" id="title" name="title" required>
+      </div>
+      
+      <label for="date">Event Date:</label>
+      <div class="form-group">
+        <input type="date" id="date" name="date" required>
+      </div>
+      
+      <label for="date">Event Time:</label>
+      <div class="form-group">
+        <input type="time" id="date" name="time" required>
+      </div>
+      
+      <label for="location">Event Location:</label>
+      <div class="form-group">
+        <input type="text" id="location" name="location" required>
+      </div>
+      
+      <label for="description">Event Description:</label>
+      <div class="form-group">
+        <textarea id="description" name="description" required></textarea>
+      </div>
+      
+      <label for="location">Event Image:</label>
+      <div class="form-group">
+        <input class="btn btn-outline-primary " type="file" id="location" name="event_pic" required>
+      </div>
+      <input type="submit" class="btn btn-outline-primary ms-2 " value="Submit">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+</body>
+{% endblock content %}
+ {% block footer %}
+        {% include 'footer.html' %}
+{% endblock footer %}

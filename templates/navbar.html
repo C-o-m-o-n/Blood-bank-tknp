@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <body>
+        <!-- Navigation-->
+        <div class="container">
+          <div class="row  align-items-center position-relative">
+            <div class="site-logo">
+              <a href="{{url_for('index')}}" class="text-white">BloodBank</a>
+            </div>
+            <nav class="site-navigation text-left ml-auto " role="navigation">
+              <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
+                <li class="active"><a href="{{url_for('index')}}" class="nav-link">Home</a></li>
+              {% if current_user.is_authenticated %}
+                <li class="active"><a class="collapse-item" href="{{url_for('user')}}">Profile</a></li>
+                <li class="active"><a class="collapse-item" href="{{url_for('add_event')}}">Add Events</a></li>
+                <li class="active"><a class="collapse-item" href="{{url_for('logout')}}">Logout</a></li>
+                {% else %}
+                <li class="active"><a class="collapse-item" href="{{url_for('login')}}">Login</a></li>
+                <li class="active"><a class="collapse-item" href="{{url_for('signup')}}">Register</a></li>
+                {% endif %}
+              </ul>
+            </nav>
+            <div class="ml-auto toggle-button d-inline-block d-lg-none"><a href="#" class="site-menu-toggle py-5 js-menu-toggle text-white"><span class="icon-menu h3 text-white"></span></a></div>
+          </div>
+        </div>
+          <!-- End of Topbar -->
+        <!-- end navbar -->
+    </body>
+</html>

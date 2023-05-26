@@ -1,0 +1,135 @@
+    /*-- Media Section-- */
+    *{
+      margin: 0;
+      padding: 0;
+      
+    }
+    .media {
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-align: start;
+      align-items: flex-start;
+    }
+    .media img {
+      width: 48px !important;
+      height: 48px !important;
+      padding: 2px;
+      border: 2px solid #f4f4f4;
+    }
+    .media-body {
+      -ms-flex: 1;
+      flex: 1;
+      padding: .4rem !important;
+    }
+    .media-body p {
+      font-family: 'Rokkitt', serif;
+      font-weight: 500 !important;
+      font-size: 14px;
+      color: #88898a;
+    }
+    .media-body small span {
+      font-family: 'Rokkitt', serif;
+      font-size: 12px;
+      color: #aaa;
+      margin-right: 10px;
+    }
+    /* Cardbox Base
+  ---------------------------------- */
+    .cardbox-base {
+      position: sticky;
+      bottom: -30px;
+      background-color: #efefef;
+      border-bottom: 2px solid #f4f4f4;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+    .cardbox-base ul {
+      margin: 10px 0px 10px 15px!important;
+      padding: 10px !important;
+      font-size: 0px;
+      display: inline-block;
+    }
+    .cardbox-base li {
+      list-style: none;
+      margin: 0px 0px 0px -8px !important;
+      padding: 0px 0px 0px 0px !important;
+      display: inline-block;
+    }
+    .cardbox-base li a i {
+      position: relative;
+      top: 4px;
+      font-size: 16px;
+      color: #8d8d8d;
+      margin-right: 15px;
+    }
+    .cardbox-base li a span {
+      font-family: 'Rokkitt', serif;
+      font-size: 14px;
+      color: #8d8d8d;
+      margin-left: 20px;
+      position: relative;
+      top: 5px;
+    }
+    .cardbox-base li a em {
+      font-family: 'Rokkitt', serif;
+      font-size: 14px;
+      color: #8d8d8d;
+      position: relative;
+      top: 3px;
+    }
+    .cardbox-base li a img {
+      width: 25px;
+      height: 25px;
+      margin: 0px !important;
+      border: 2px solid #fff;
+    }
+
+
+    /* ------------------------------- */
+    /* Cardbox Comments
+  ---------------------------------- */
+    .cardbox-comments {
+      padding: 10px;
+      font-size: 0px;
+      text-align: center;
+
+    }
+    .cardbox-comments .comment-avatar img {
+      margin-top: 1px;
+      margin-right: 10px;
+      position: relative;
+      width: 40px;
+      height: 40px;
+    }
+
+    .search {
+      position: relative;
+
+    }
+    .search input[type="text"] {
+      background-color: #fff;
+      line-height: 10px;
+      padding: 15px 60px 20px 10px;
+      border: 2px solid #f4f4f4;
+      border-radius: 4px;
+      font-family: 'Rokkitt', serif;
+      font-size: 14px;
+      color: #8d8d8d;
+      height: inherit;
+      font-weight: 700;
+    }
+    .comments {
+      border: 1px solid #efefef;
+      margin: 5px;
+      border-radius: 5px;
+      background-color: #efefef;
+
+    }
+    .coment-profile {
+      border-top-left-radius: 5px ;
+      border-top-right-radius: 5px ;
+      display: flex;
+      align-content: center;
+      background-color:#efefef;
+
+    }
