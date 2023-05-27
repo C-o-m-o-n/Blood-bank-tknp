@@ -120,10 +120,9 @@ with app.app_context():
     events = Events.query.all()
     return render_template("index.html", events=events, current_user=current_user )
     
-    
-  
   # Route for event submission and display
   @app.route('/add_event', methods=['GET', 'POST'])
+  @login_required
   def add_event():
     if request.method == 'POST':
         # Get form data from the request
@@ -133,10 +132,11 @@ with app.app_context():
         description = request.form['description']
         time = request.form['time']
         event_pic = request.files['event_pic']
+        poster = current_user.id
         if event_pic:
           event_img = save_post_img(event_pic)
         # Create a new Event instance
-        event = Events(title=title, date=date, time=time, location=location, description=description, event_img=event_img )
+        event = Events(title=title, date=date, time=time, location=location, description=description, poster_id=poster,event_img=event_img )
 
         # Save the event to the database
         db.session.add(event)
