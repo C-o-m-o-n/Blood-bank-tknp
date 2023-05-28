@@ -26,7 +26,7 @@
 
       <div class="owl-carousel owl-1 ">
         <div class="ftco-cover-1 overlay" style="background-image: url('../static/images/hero_1.jpg');"></div>
-        <div class="ftco-cover-1 overlay" style="background-image: url('../static/images/hero_1.jpg');"></div>
+        <div class="ftco-cover-1 overlay" style="background-image: url('../static/images/image2.jpeg');"></div>
         <div class="ftco-cover-1 overlay" style="background-image: url('../static/images/hero_3.jpg');"></div>
         
       </div>
@@ -38,8 +38,8 @@
 
         <a href="#" class="feature-29192 overlay-danger" style="background-image: url('../static/images/image3.jpeg');">
           <div class="text">
-            <span class="meta">Livelihood</span>
-            <h3 class="text-cursive text-white h1">Livelihood</h3>
+            <span class="meta">Child</span>
+            <h3 class="text-cursive text-white h1">Save the children</h3>
           </div>
         </a>
 
@@ -52,8 +52,8 @@
 
         <div class="feature-29192 overlay-warning" style="background-image: url('../static/images/image7.jpeg');">
           <div class="text">
-            <span class="meta">School</span>
-            <h3 class="text-cursive text-white h1">New Class Rooms</h3>
+            <span class="meta">Mother</span>
+            <h3 class="text-cursive text-white h1">Save the mothers</h3>
           </div>
         </div>
 
@@ -66,20 +66,23 @@
         <div class="row mb-5 align-items-st">
           <div class="col-md-4">
             <div class="heading-20219">
-              <h2 class="title text-cursive">Latest Causes</h2>
+              <h2 class="title text-cursive">Donors' reviews</h2>
             </div>
           </div>
           <div class="col-md-8">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga ea reprehenderit rerum magnam, ipsum aperiam. Earum, expedita ratione.</p>
+            <p>These are what some of our top donors has to say about us.</p>
           </div>
         </div>
 
         <div class="row">
+			{% for review in reviews %}
           <div class="col-md-4">
               <div class="cause shadow-sm">
               
                 <a href="#" class="cause-link d-block">
-                  <img src="../static/images/image8.jpeg" alt="Image" class="img-fluid">
+					{% if review.review_img %}
+                  <img src="{{url_for('static', filename='assets/post_img/' + review.review_img)}}" alt="Image" class="img-fluid">
+                  {% endif %}
                   <div class="custom-progress-wrap">
                     <span class="caption">80% complete</span>
                     <div class="custom-progress-inner">
@@ -89,91 +92,25 @@
                 </a>
 
                 <div class="px-3 pt-3 border-top-0 border border shadow-sm">
-                  <span class="badge-danger py-1 small px-2 rounded mb-3 d-inline-block">School</span>
-                  <h3 class="mb-4"><a href="#">Alias Odit Ipsam Quas Unde Obcaecati</a></h3>
-                  <div class="border-top border-light border-bottom py-2 d-flex">
-                    <div>Donated</div>
-                    <div class="ml-auto"><strong class="text-primary">$32,919</strong></div>
-                  </div>
-
+                  <span class="badge-primary py-1 small px-2 rounded mb-3 d-inline-block">Donated</span>
+                  <p >{{ review.content }}</p>
+             
                   <div class="py-4">
                     <div class="d-flex align-items-center">
-                      <img src="../static/images/person_1.jpg" alt="Image" class="rounded-circle mr-3" width="50">
-                      <div class="">James Smith</div>
+						{% if review.reviewer.profile_pic %}
+                      <img src="{{url_for('static', filename='assets/profile_img/' + review.reviewer.profile_pic)}}" alt="Image" class="rounded-circle mr-3" width="50">
+                      {% endif %}
+                      <div class="">{{review.reviewer.username }}</div>
                     </div>
                   </div>
                 </div>
               
               </div>
           </div>
+          {% endfor %}
           
+        
           
-          <div class="col-md-4">
-            
-            <div class="cause shadow-sm">
-              
-                <a href="#" class="cause-link d-block">
-                  <img src="../static/images/img_2.jpg" alt="Image" class="img-fluid">
-                  <div class="custom-progress-wrap">
-                    <span class="caption">80% complete</span>
-                    <div class="custom-progress-inner">
-                      <div class="custom-progress bg-primary" style="width: 80%;"></div>
-                    </div>
-                  </div>
-                </a>
-
-                <div class="px-3 pt-3 border-top-0 border border shadow-sm">
-                  <span class="badge-primary py-1 small px-2 rounded mb-3 d-inline-block">Health</span>
-                  <h3 class="mb-4"><a href="#">Alias Odit Ipsam Quas Unde Obcaecati</a></h3>
-                  <div class="border-top border-light border-bottom py-2 d-flex">
-                    <div>Donated</div>
-                    <div class="ml-auto"><strong class="text-primary">$32,919</strong></div>
-                  </div>
-
-                  <div class="py-4">
-                    <div class="d-flex align-items-center">
-                      <img src="../static/images/person_1.jpg" alt="Image" class="rounded-circle mr-3" width="50">
-                      <div class="">James Smith</div>
-                    </div>
-                  </div>
-                </div>
-              
-              </div>
-
-          </div>
-          <div class="col-md-4">
-            
-            <div class="cause shadow-sm">
-              
-                <a href="#" class="cause-link d-block">
-                  <img src="../static/images/img_3.jpg" alt="Image" class="img-fluid">
-                  <div class="custom-progress-wrap">
-                    <span class="caption">80% complete</span>
-                    <div class="custom-progress-inner">
-                      <div class="custom-progress bg-warning" style="width: 80%;"></div>
-                    </div>
-                  </div>
-                </a>
-
-                <div class="px-3 pt-3 border-top-0 border border ">
-                  <span class="badge-warning py-1 small px-2 rounded mb-3 d-inline-block">Livelihood</span>
-                  <h3 class="mb-4"><a href="#">Alias Odit Ipsam Quas Unde Obcaecati</a></h3>
-                  <div class="border-top border-light border-bottom py-2 d-flex">
-                    <div>Donated</div>
-                    <div class="ml-auto"><strong class="text-primary">$32,919</strong></div>
-                  </div>
-
-                  <div class="py-4">
-                    <div class="d-flex align-items-center">
-                      <img src="../static/images/person_1.jpg" alt="Image" class="rounded-circle mr-3" width="50">
-                      <div class="">James Smith</div>
-                    </div>
-                  </div>
-                </div>
-              
-              </div>
-
-          </div>
         </div>
       </div>
     </div>

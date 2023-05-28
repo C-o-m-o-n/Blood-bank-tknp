@@ -45,11 +45,6 @@ login_manager.login_view = 'login'
 login_manager.login_message_category = 'info'
 login_manager.init_app(app)
 #default Column id
-
-id_list =[]
-for i in range(1000000):
-  id_list.append(i)
-  uid = random.choice(id_list)
   
 #define the Donations table
 class BlogPost(db.Model,UserMixin):
@@ -59,6 +54,16 @@ class BlogPost(db.Model,UserMixin):
   blood_type = db.Column(db.String(256))
   #foreign key to link to other tables
   poster_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+  
+class Reviews(db.Model,UserMixin):
+  id = db.Column(db.Integer, primary_key=True)
+  date_posted = db.Column(db.DateTime)
+  content = db.Column(db.String(256))
+  review_img = db.Column(db.String(100))
+  #foreign key to link to other tables
+  poster_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+  comments = db.relationship('Comments', backref='reviews')
+  likes = db.relationship('Likes', backref='reviews')
   
 #define the events table
 class Events(db.Model,UserMixin):
@@ -81,6 +86,7 @@ class Users(db.Model,UserMixin):
   email = db.Column(db.String(250))
   first_name = db.Column(db.String(256))
   last_name = db.Column(db.String(256))
+  
   phone = db.Column(db.String(256))
   address = db.Column(db.String(256))
   password = db.Column(db.String(256))
@@ -90,6 +96,7 @@ class Users(db.Model,UserMixin):
   #user can have many ppsts
   blog_post = db.relationship('BlogPost', backref='poster')
   event = db.relationship('Events', backref='poster')
+  review = db.relationship('Reviews', backref='reviewer')
   likes = db.relationship('Likes', backref='liker')
   comments = db.relationship('Comments', backref='comenter')
   
@@ -100,6 +107,7 @@ class Comments(db.Model, UserMixin):
   content = db.Column(db.String(100))
   date_posted = db.Column(db.DateTime)
   event_id = db.Column(db.Integer, db.ForeignKey('events.id'))
+  reviews_id = db.Column(db.Integer, db.ForeignKey('reviews.id'))
 
 
 #define the Likes table
@@ -109,6 +117,7 @@ class Likes(db.Model,UserMixin):
   date_posted = db.Column(db.DateTime)
   #user can have many ppsts
   event_id = db.Column(db.Integer, db.ForeignKey('events.id'))
+  reviews_id = db.Column(db.Integer, db.ForeignKey('reviews.id'))
   
 #main app code starts here****************((*))
 with app.app_context(): 
@@ -118,8 +127,33 @@ with app.app_context():
   def index():
     #posts = BlogPost.query.all()
     events = Events.query.all()
-    return render_template("index.html", events=events, current_user=current_user )
-    
+    reviews = Reviews.query.all()
+    return render_template("index.html", events=events[-2:], reviews=reviews, current_user=current_user )
+  
+  
+  #Route for event review submission
+  @app.route('/add_review', methods=['GET', 'POST'])
+  @login_required
+  def add_review():
+	  if request.method == 'POST':
+		  content = request.form['content']
+		  review_pic = request.files['review_pic']
+		  poster = current_user.id
+		  if not review_pic:
+			  flash("please enter an image", "error")			  
+		  elif review_pic:
+			  review_img = save_post_img(review_pic)
+			  review = Reviews(date_posted=datetime.now(), content=content, poster_id=poster,review_img=review_img )
+			  #Save the event to the database
+			  db.session.add(review)
+			  db.session.commit()
+			  flash("thanks for adding your review!", "succes")
+			  return redirect(url_for('index'))
+		
+	  return render_template('add_review.html')
+			 
+			 
+			 
   # Route for event submission and display
   @app.route('/add_event', methods=['GET', 'POST'])
   @login_required
@@ -141,7 +175,7 @@ with app.app_context():
         # Save the event to the database
         db.session.add(event)
         db.session.commit()
-        return 'Event submitted successfully!'
+        return redirect(url_for('index'))
     return render_template('add_event.html')
 
 

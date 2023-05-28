@@ -46,7 +46,7 @@
                 </a>
                 {% endif %}
               <div class="px-3 d-flex">
-                <div class="bg-danger p-3 d-inline-block text-center rounded mr-4 date">
+                <div class="bg-primary p-3 d-inline-block text-center rounded mr-4 date">
                   
                   <span class="text-white small"><span class="icon-calender mr-2 text-muted"></span>{{event.date}}</span>
                 </div>
@@ -57,11 +57,8 @@
                   </div>
                   <h3><a href="single.html">{{event.title}}</a></h3>
                   <p>{{event.description}}</p>
-                  <p>{{event.description}}</p>
-                  <p>{{event.description}}</p>
-                  <p>{{event.description}}</p>
-                  <p>{{event.description}}</p>
-                <p><a href="{{url_for('event', event_id=event.id)}}" class="btn btn-primary py-3 px-4 rounded-0">Attend Event</a></p>
+                 
+                <p class="text-cursive text-primary">How was the evnt??...<a href="{{url_for('add_review')}}" class="btn btn-danger py-3 px-4 rounded-0"> Leave a review </a></p>
                 </div>
                 </div>
               </div>

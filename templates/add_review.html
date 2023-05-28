@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+    <div class="site-wrap" id="home-section">
+
+      <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+          <div class="site-mobile-menu-close mt-3">
+            <span class="icon-close2 js-menu-toggle"></span>
+          </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+      </div>
+
+      <header class="site-navbar site-navbar-target bg-secondary shadow" role="banner">
+        {% include 'navbar.html' %}
+      </header>
+<body>
+<br>
+      <div class=" bg-primary">
+        <div class="row align-items-stretch">
+          <div class="col-md-6">
+            <img src="../static/images/img_1.jpg" alt="Image" class="img-fluid shadow">
+          </div>
+          <div class="col-md-6">
+			  
+            <div class="bg-white h-100 p-4 shadow">
+				<div >
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    
+      {% for category, message in messages %}
+      {% if category == 'error'%}
+      <div class="alert alert-danger alert-dismissable fade show" role="alert">
+              {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="close">
+              <span aria-hidden="true">x</span>
+            </button>
+          </div>
+        {% elif category == 'info' %}
+        <div class="alert alert-info alert-dismissable fade show" role="alert">
+              {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="close">
+              <span aria-hidden="true">x</span>
+            </button>
+          </div>
+          {% else %}
+          <div class="alert alert-success alert-dismissable fade show" role="alert">
+              {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="close">
+              <span aria-hidden="true">x</span>
+            </button>
+          </div>
+          {% endif %}
+          {% endfor %}
+        
+        {% endif %}
+        {% endwith %}
+      </div>
+              <h3 class="mb-4 text-cursive">Make a Review!</h3>
+   <form class="user" action="{{ url_for('add_review')}}" method="POST" enctype="multipart/form-data">
+<div class="form-group row">
+	<div class=" m-3 form-group">
+		<label for="message">Review </label>
+		<textarea name="content" class="form-control" id="message" rows="3" placeholder="Enter your message"></textarea>
+     </div>
+
+      <div class=" m-3 form-group">
+		  <label for="location">Add an image that best describes your review</label>
+        <input class="btn btn-outline-primary " type="file" id="location" name="review_pic" required>
+      </div>
+        <input type="submit" class="btn btn-primary btn-user btn-block" value="Review!">
+</form>
+            </div>
+          </div>
+        </div>
+      </div>
+</body>
+{% endblock content %}
+ {% block footer %}
+        {% include 'footer.html' %}
+{% endblock footer %}
+
+
+
+
