@@ -250,7 +250,9 @@ h1, h2, h3, h4, h5,
   font-weight: 300;
   color: #364d59;
   font-family: "Roboto", serif; }
-
+p{
+  margin: 0;
+}
 .border-2 {
   border-width: 2px; }
 
