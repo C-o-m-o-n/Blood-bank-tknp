@@ -17,6 +17,7 @@
               {% if current_user.is_authenticated %}
                 <li class="active"><a class="collapse-item" href="{{url_for('user')}}">Profile</a></li>
                 <li class="active"><a class="collapse-item" href="{{url_for('add_event')}}">Add Events</a></li>
+                <li class="active"><a class="collapse-item" href="{{url_for('events')}}">Events</a></li>
                 <li class="active"><a class="collapse-item" href="{{url_for('logout')}}">Logout</a></li>
                 {% else %}
                 <li class="active"><a class="collapse-item" href="{{url_for('login')}}">Login</a></li>

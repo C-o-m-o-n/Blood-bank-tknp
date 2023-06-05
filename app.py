@@ -130,6 +130,13 @@ with app.app_context():
     reviews = Reviews.query.all()
     return render_template("index.html", events=events[-2:], reviews=reviews, current_user=current_user )
   
+
+  @app.route('/events')
+  def events():
+    events = Events.query.all()
+    return render_template("events.html", events=events, current_user=current_user )
+  
+  
   #the privacy page
   @app.route('/privacy')
   def privacy():
@@ -140,7 +147,8 @@ with app.app_context():
   #the about page
   @app.route('/about')
   def about():
-    return("welcome to the about page")
+    reviews = Reviews.query.all()
+    return(render_template('about.html', reviews=reviews,))
   
   #the team page
   @app.route('/our_team')
@@ -155,7 +163,8 @@ with app.app_context():
     #the donors page
   @app.route('/donors')
   def donors():
-    return("welcome to the donors page")
+    donors = Users.query.all()
+    return(render_template("donors.html", donors=donors))
   
   #the testimonials page
   @app.route('/testimonials')
@@ -175,7 +184,7 @@ with app.app_context():
 
   
 
-  #Route for event review submission
+  #Route f  or event review submission
   @app.route('/add_review', methods=['GET', 'POST'])
   @login_required
   def add_review():
