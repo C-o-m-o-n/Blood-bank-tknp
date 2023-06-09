@@ -100,7 +100,7 @@
               <div class="col-md-7">
                 <div class="heading-20219">
                   <h2 class="title text-white mb-4 text-cursive">Some importance of donating blood</h2>
-                  <p class="text-white">By donating blood, individuals contribute to building a sufficient stockpile of blood products, making it possible to meet the urgent needs of patients, especially those requiring immediate transfusions to sustain their lives..</p>
+                  <p class="text-white">By donating blood, individuals contribute to building a sufficient stockpile of blood products, making it possible to meet the urgent needs of patients, especially those requiring immediate transfusions to sustain their lives.</p>
                 </div>
               </div>
             </div>
@@ -109,7 +109,7 @@
                 <div class="feature-29012 d-flex">
                   <div class="number mr-4"><span>1</span></div>
                   <div>
-                    <h3>Meeting Emergency Needs:</h3>
+                    <h3>Meeting Emergency Needs</h3>
                     <p> Blood transfusion is a fundamental aspect of modern healthcare, playing a crucial role in emergency situations such as accidents, surgeries, and natural disasters. The availability of an adequate blood supply is essential to ensure prompt and efficient medical care. By donating blood, individuals contribute to building a sufficient stockpile of blood products, making it possible to meet the urgent needs of patients, especially those requiring immediate transfusions to sustain their lives.</p>
                   </div>
                 </div>
@@ -167,17 +167,16 @@
 
         <div class="row">
 			{% for review in reviews %}
-          <div class="col-md-4">
-              <div class="cause shadow-sm">
+          <div class="col-md-4 " >
+              <div class="cause shadow-sm ">
               
                 <a href="#" class="cause-link d-block">
 					{% if review.review_img %}
                   <img src="{{url_for('static', filename='assets/post_img/' + review.review_img)}}" alt="Image" class="img-fluid">
                   {% endif %}
                   <div class="custom-progress-wrap">
-                    <span class="caption">80% complete</span>
                     <div class="custom-progress-inner">
-                      <div class="custom-progress bg-danger" style="width: 80%;"></div>
+                      <div class="custom-progress bg-danger" style="width: 100%;"></div>
                     </div>
                   </div>
                 </a>
@@ -201,6 +200,8 @@
           {% endfor %}
 
         </div>
+
+
       </div>
     </div>
 
@@ -208,56 +209,55 @@
       <div class="container">
 
         <div class="row align-items-center">
-          <div class="col-20">
-            <div class="row mb-5">
-              <div class="col-md-7">
-                <div class="heading-20219">
-                  <h2 class="title text-white mb-4 text-cursive">Why Choose Us</h2>
-                  <p class="text-white">Our mission is to ensure a stable blood supply and make a difference in people's lives</p>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6 mb-5">
-                <div class="feature-29012 d-flex">
-                  <div class="number mr-4"><span>1</span></div>
-                  <div>
-                    <h3>Odit Reiciendis</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi id sint explicabo odit reiciendis eaque accusamus labore necessitatibus.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6 mb-5">
-                <div class="feature-29012 d-flex">
-                  <div class="number mr-4"><span>2</span></div>
-                  <div>
-                    <h3>Nisi Sint Explicabo</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi id sint explicabo odit reiciendis eaque accusamus labore necessitatibus.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-6 mb-5">
-                <div class="feature-29012 d-flex">
-                  <div class="number mr-4"><span>3</span></div>
-                  <div>
-                    <h3>Accusamus Labore Necessitatibus</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi id sint explicabo odit reiciendis eaque accusamus labore necessitatibus.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6 mb-5">
-                <div class="feature-29012 d-flex">
-                  <div class="number mr-4"><span>4</span></div>
-                  <div>
-                    <h3>Consectetur Dolor Elit</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi id sint explicabo odit reiciendis eaque accusamus labore necessitatibus.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <div class="col-12">
+    <div class="row mb-5">
+      <div class="col-md-7">
+        <div class="heading-20219">
+          <h2 class="title text-white mb-4 text-cursive">Why Choose Us</h2>
+          <p class="text-white">At BloodBank, we are dedicated to making a difference in people's lives through blood donation. Here's why you should choose us:</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 mb-5">
+        <div class="feature-29012 d-flex">
+          <div class="number mr-4"><span>1</span></div>
+          <div>
+            <h3>Easy and Convenient</h3>
+            <p>We make the blood donation process easy and convenient for you. Our donation centers are strategically located and offer flexible operating hours to accommodate your schedule.</p>
           </div>
         </div>
+      </div>
+      <div class="col-md-6 mb-5">
+        <div class="feature-29012 d-flex">
+          <div class="number mr-4"><span>2</span></div>
+          <div>
+            <h3>Safe and Hygienic</h3>
+            <p>Your safety is our top priority. We follow strict sterilization protocols and ensure that all equipment used during the donation process is safe and hygienic.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 mb-5">
+        <div class="feature-29012 d-flex">
+          <div class="number mr-4"><span>3</span></div>
+          <div>
+            <h3>Impactful Contributions</h3>
+            <p>By donating blood with us, you can make a significant impact on saving lives. Your donation can help patients in need of transfusions and contribute to the overall well-being of the community.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 mb-5">
+        <div class="feature-29012 d-flex">
+          <div class="number mr-4"><span>4</span></div>
+          <div>
+            <h3>Compassionate Care</h3>
+            <p>We provide compassionate care throughout the donation process. Our experienced staff ensures your comfort and addresses any concerns or questions you may have.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
       </div>
     </div>
 

@@ -163,7 +163,13 @@ with app.app_context():
     #the donors page
   @app.route('/donors')
   def donors():
-    donors = Users.query.all()
+    donations = BlogPost.query.all()
+    donors = []
+    for donation in donations:
+      if donation.poster != None:
+        donors.append(donation.poster)
+        # print(donation.poster.username)
+
     return(render_template("donors.html", donors=donors))
   
   #the testimonials page
