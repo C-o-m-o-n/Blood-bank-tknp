@@ -60,55 +60,112 @@
 
       </div>
     </div>
+  
 
     <div class="site-section">
       <div class="container">
-        
-        <div class="row mb-5 align-items-st">
-          <div class="col-md-4">
-            <div class="heading-20219">
-              <h2 class="title text-cursive">Donors' reviews</h2>
-            </div>
-          </div>
-          <div class="col-md-8">
-            <p>These are what some of our top donors has to say about us.</p>
-          </div>
-        </div>
+          <div class="heading-20219">
+      <h2 class="title text-white mb-4 text-cursive">Frequently asked questions</h2>
+    </div>
+       <div class="row">
 
-        <div class="row">
-			{% for review in reviews %}
-          <div class="col-md-4">
-              <div class="cause shadow-sm">
-              
-                <a href="#" class="cause-link d-block">
-					{% if review.review_img %}
-                  <img src="{{url_for('static', filename='assets/post_img/' + review.review_img)}}" alt="Image" class="img-fluid">
-                  {% endif %}
-                  <div class="custom-progress-wrap">
-                    <span class="caption">80% complete</span>
-                    <div class="custom-progress-inner">
-                      <div class="custom-progress bg-danger" style="width: 80%;"></div>
-                    </div>
-                  </div>
-                </a>
+<div class="card h-100 col-sm-6 col-lg-4 m-1" >
+  
+    <div class="card-body">
+    <h3 class="card-title">Who can donate blood?</h3>
+    <p class="card-text">Most healthy individuals aged 17-65 (age requirements may vary) and weighing at least 110 pounds (50 kg) are eligible to donate blood. However, specific eligibility criteria may vary depending on factors such as medical history, recent travel, and medications taken. It is recommended to check with your local donation center for detailed eligibility guidelines..</p>
+    <a href="#" class="card-link">read more</a>
+   
+  </div>
 
-                <div class="px-3 pt-3 border-top-0 border border shadow-sm">
-                  <span class="badge-primary py-1 small px-2 rounded mb-3 d-inline-block">Donated</span>
-                  <p >{{ review.content }}</p>
-             
-                  <div class="py-4">
-                    <div class="d-flex align-items-center">
-						{% if review.reviewer.profile_pic %}
-                      <img src="{{url_for('static', filename='assets/profile_img/' + review.reviewer.profile_pic)}}" alt="Image" class="rounded-circle mr-3" width="50">
-                      {% endif %}
-                      <div class="">{{review.reviewer.username }}</div>
-                    </div>
-                  </div>
-                </div>
+</div>
+<div class="card h-100 col-sm-6 col-lg-4 m-1">
+  <div class="card-body">
+    <h3 class="card-title">How often can I donate blood?</h3>
+    <p class="card-text">In general, individuals can donate whole blood every 8-12 weeks. However, the specific frequency may vary based on local guidelines and the type of donation (whole blood, platelets, plasma). It is essential to follow the recommended waiting period between donations to allow your body to replenish its blood supply adequately.</p>
+    <a href="#" class="card-link">read more</a>
+   
+  </div>
+</div>
+
+<div class="card h-100 col-sm-6 col-lg-4 m-1">
+  <div class="card-body">
+    <h3 class="card-title">Is donating blood safe?</h3>
+    <p class="card-text">Yes, donating blood is safe. Donation centers follow strict protocols to ensure donor safety. All equipment used during the donation process is sterile and disposable. Trained medical professionals conduct the process, and they adhere to stringent guidelines to minimize any risks or complications.</p>
+    <a href="#" class="card-link">read more</a>
+   
+  </div>
+</div>
+<div class="card h-100 col-sm-6 col-lg-3 m-3">
+  <div class="card-body">
+    <h3 class="card-title">Does donating blood hurt?</h3>
+    <p class="card-text">The actual blood donation process typically involves minimal discomfort. You may feel a brief pinch or sting when the needle is inserted, but the sensation is generally mild. The majority of donors report feeling no significant pain during or after the donation. The staff at the donation center will ensure your comfort throughout the process.</p>
+    <a href="#" class="card-link">read more</a>
+   
+  </div>
+</div>
+<div class="card h-100 col-sm-6 col-lg-3 m-3">
+  <div class="card-body">
+    <h3 class="card-title">How long does the blood donation process take?</h3>
+    <p class="card-text">The duration of the blood donation process varies depending on the type of donation and individual factors. Whole blood donation typically takes about 10-15 minutes, while platelet or plasma donation may take longer, usually around 1-2 hours. The pre-donation screening and post-donation rest period should also be considered, so the entire process may take an hour or more.</p>
+    <a href="#" class="card-link">read more</a>
+   
+  </div>
+</div>
+
+<div class="card h-100 col-sm-6 col-lg-3 m-3">
+  <div class="card-body">
+    <h3 class="card-title">What happens to the donated blood?</h3>
+    <p class="card-text">After donation, the blood undergoes several steps to ensure its safety and usability. It is carefully tested for various infectious diseases, typed, and processed into different components (red blood cells, platelets, plasma) for various medical purposes. The blood components are then stored and distributed to hospitals and medical facilities to be used for transfusions and medical treatments.</p>
+    <a href="#" class="card-link">read more</a>
+   
+  </div>
+</div>
+
+<div class="card h-100 col-sm-6 col-lg-3m-3">
+  <div class="card-body">
+    <h3 class="card-title">Can I donate blood if I have a tattoo or piercing?</h3>
+    <p class="card-text">The eligibility of individuals with tattoos or piercings varies based on local guidelines and the time since the procedure. In many cases, as long as the tattoo or piercing was done at a licensed facility using sterile equipment and you meet other eligibility criteria, you can still donate blood. However, specific waiting periods after getting a tattoo or piercing may apply.</p>
+    <a href="#" class="card-link">read more</a>
+   
+  </div>
+</div>
+
+
+<div class="card h-100 col-sm-6 col-lg-3 m-3">
+  <div class="card-body">
+    <h3 class="card-title">Can I donate blood if I have a cold or flu?</h3>
+    <p class="card-text">If you currently have cold or flu symptoms, it is advisable to wait until you have fully recovered before donating blood. Donors should be in good health during the donation process to ensure the safety of both the donor and the recipient. If you have recently recovered from an illness, check with your donation center for any temporary deferral periods.
+</p>
+    <a href="#" class="card-link">read more</a>
+   
+  </div>
+</div>
+<div class="card h-100 col-sm-6 col-lg-3 m-3">
+  <div class="card-body">
+    <h3 class="card-title">Are there any side effects of blood donation?</h3>
+    <p class="card-text">Blood donation is generally safe, and most donors experience no significant side effects. However, some individuals may experience minor temporary side effects such as dizziness, lightheadedness, or bruising at the needle insertion site. These effects are typically short-lived and can be managed with rest, hydration, and light snacks provided by the donation center.
+</p>
+    <a href="#" class="card-link">read more</a>
+   
+  </div>
+</div>
+<div class="card h-100 col-sm-6 col-lg-3 m-3">
+  <div class="card-body">
+    <h3 class="card-title">Can I know my blood type after donating?</h3>
+    <p class="card-text">Yes, many donation centers provide information
+</p>
+    <a href="#" class="card-link">read more</a>
+   
+  </div>
+</div>
+
+</div>
+
               
               </div>
           </div>
-          {% endfor %}
+     
 
         </div>
       </div>

@@ -158,7 +158,7 @@ with app.app_context():
   #the galery page
   @app.route('/galery')
   def galery():
-    return("welcome to the galery page")
+    return(render_template('galery.html'))
   
     #the donors page
   @app.route('/donors')
@@ -179,7 +179,7 @@ with app.app_context():
     #the faqs page
   @app.route('/faqs')
   def faqs():
-    return("welcome to the faqs page")
+    return(render_template('faqs.html'))
 
 
   
