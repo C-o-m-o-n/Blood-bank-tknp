@@ -394,9 +394,28 @@ p{
     position: relative;
     z-index: 1; }
 
+/*gallery*/
+
+.close {
+  font-size: 1.5rem;
+}
+
+.col-12 img {
+  opacity: 0.7;
+  cursor: pointer;
+  border-radius: 20px;
+  margin: 2rem;
+  width: 100%;
+}
+
+.col-12 img:hover {
+  opacity: 1;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 @media (max-width: 991.98px) {
   .img-md-fluid {
-    max-width: 100%; } }
+    width: 100%; } }
 
 @media (max-width: 991.98px) {
   .display-1, .display-3 {

@@ -2,7 +2,7 @@
 <html lang="en">
     <body>
         <!-- Navigation-->
-        <div class="container">
+        <div class="container ">
           <div class="row  align-items-center position-relative">
             <div class="site-logo">
               <a href="{{url_for('index')}}" class="text-white">BloodBank</a>
@@ -10,9 +10,9 @@
             <nav class="site-navigation text-left ml-auto " role="navigation">
               <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
                 <li class="active"><a href="{{url_for('index')}}" class="nav-link">Home</a></li>
-                <li class="active"><a href="{{url_for('our_team')}}" class="nav-link">Our Team</a></li>
+             
                 <li class="active"><a href="{{url_for('donors')}}" class="nav-link">Donors</a></li>
-                <li class="active"><a href="{{url_for('galery')}}" class="nav-link">Galery</a></li>
+                <li class="active"><a href="{{url_for('galery')}}" class="nav-link">Gallery</a></li>
                
               {% if current_user.is_authenticated %}
                 <li class="active"><a class="collapse-item" href="{{url_for('user')}}">Profile</a></li>

@@ -155,7 +155,7 @@ with app.app_context():
   def our_team():
     return("welcome to the our team page")
   
-  #the galery page
+  #the gallery page
   @app.route('/galery')
   def galery():
     return(render_template('galery.html'))
