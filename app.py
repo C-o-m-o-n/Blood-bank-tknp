@@ -55,6 +55,18 @@ class BlogPost(db.Model,UserMixin):
   #foreign key to link to other tables
   poster_id = db.Column(db.Integer, db.ForeignKey('users.id'))
   
+  #define the Donations table
+class Requests(db.Model,UserMixin):
+  id = db.Column(db.Integer, primary_key=True)
+  date_posted = db.Column(db.DateTime)
+  message = db.Column(db.String(256))
+  blood_type = db.Column(db.String(256))
+  phone = db.Column(db.String(256))
+  address = db.Column(db.String(256))
+  #foreign key to link to other tables
+  poster_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+  
+
 class Reviews(db.Model,UserMixin):
   id = db.Column(db.Integer, primary_key=True)
   date_posted = db.Column(db.DateTime)
@@ -143,6 +155,34 @@ with app.app_context():
     return("welcome to the privacy page")
     #return render_template("privacy.html", current_user=current_user )
   
+  #the requests page
+  @app.route('/request_blood', methods=['GET','POST'])
+  @login_required
+  def request_blood():
+    if request.method == "POST":
+      blood_type = request.form['blood_type']
+      content = request.form['content']
+      poster = current_user.id
+      if content:
+        request_blood = Requests(message=content, poster_id=poster, blood_type=blood_type, date_posted=datetime.now())
+        db.create_all()
+        db.session.add(request_blood)
+        db.session.commit()      
+      elif  not content:
+        request_blood = Requests(message="no message", poster_id=poster, blood_type=blood_type, date_posted=datetime.now())
+        db.create_all()
+        db.session.add(request_blood)
+        db.session.commit() 
+      elif not address and not content:
+        flash("please enter Your address", 'error')
+        return redirect(url_for('index'))
+      elif not blood_type:
+        flash("please enter Your blood type", 'error')
+        return redirect(url_for('index'))
+    
+    
+    return(render_template("request.html"))
+    
   
   #the about page
   @app.route('/about')
