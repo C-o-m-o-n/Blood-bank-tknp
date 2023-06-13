@@ -188,9 +188,7 @@ with app.app_context():
     return(render_template('faqs.html'))
 
 
-  @app.route('/request')
-  def request():
-    return(render_template('request.html'))
+  
 
   #Route f  or event review submission
   @app.route('/add_review', methods=['GET', 'POST'])
