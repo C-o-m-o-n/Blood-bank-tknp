@@ -97,16 +97,21 @@
 </div>
 
 
+
 <div class="card  col-sm-6 col-lg-3 m-4" style="padding: 5px; width: 100%">
-  
+  {% for review in reviews %}
+        {% if review.review_img %}
+        <img src="{{url_for('static', filename='assets/post_img/' + review.review_img)}}" alt="Image" class="img-fluid"
+          style="width: 40px; height: 40px; border-radius: 10px;">
+        {% endif %}
     <div class="card-body">
     <h3 class="card-title">Reviews</h3>
-    <p class="card-text text-center">Reviews go here</p>
-    <a href="#" class="card-link">read more</a>
-   
-  </div>
-
+    <p class="card-text text-center">{{ review.date_posted }}</p>
+    <a href="#" class="card-link">{{ review.content }}</a>
+    </div>
+      {% endfor %}
 </div>
+
 
 
 </div>
