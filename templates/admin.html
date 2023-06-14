@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+    <div class="site-wrap" id="home-section">
+
+      <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+          <div class="site-mobile-menu-close mt-3">
+            <span class="icon-close2 js-menu-toggle"></span>
+          </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+      </div>
+
+      <header class="site-navbar site-navbar-target bg-secondary shadow" role="banner">
+        {% include 'navbar.html' %}
+      </header>
+
+
+<div class="row">
+
+<div class="card  col-sm-6 col-lg-2 m-2">
+  <div class="" style="padding: 5px; width: 100%">
+  
+    <div class="card-body">
+    <h3 class="card-title">Users</h3>
+    {% for user in users %}
+        {% if user.profile_pic %}
+        <img src="{{url_for('static', filename='assets/profile_img/' + user.profile_pic)}}" alt="Image" class="img-fluid"
+          style="width: 40px; height: 40px; border-radius: 50%;">
+        {% endif %}
+      <p>{{ user.username }}</p>
+      <div >
+        <span class="badge-primary py-1 small px-2 rounded mb-3 d-inline-block">Donated</span>
+        <p>{{ user.email }}</p>
+        </div>
+      {% endfor %}
+        </div>
+  </div>
+</div>
+
+
+<div class="card  col-sm-6 col-lg-2 m-2">
+  <div class="" style="padding: 5px; width: 100%">
+  
+    <div class="card-body">
+    <h3 class="card-title">Events</h3>
+    {% for event in events %}
+        {% if event.event_img %}
+        <img src="{{url_for('static', filename='assets/post_img/' + event.event_img)}}" alt="Image" class="img-fluid"
+          style="width: 40px; height: 40px; border-radius: 10px;">
+        {% endif %}
+      <p>{{ event.title }}</p>
+      <div >
+        <span class="badge-primary py-1 small px-2 rounded mb-3 d-inline-block">Donated</span>
+        <p>{{ event.description }}</p>
+        </div>
+      {% endfor %}
+        </div>
+  </div>
+</div>
+
+
+<div class="card  col-sm-6 col-lg-2 m-2">
+  <div class="" style="padding: 5px; width: 100%">
+  
+    <div class="card-body">
+    <h3 class="card-title">Requests</h3>
+    {% for request in requests %}
+    <p>{{ request.date_posted }}</p>
+      <div >
+        <span class="badge-primary py-1 small px-2 rounded mb-3 d-inline-block">Donated</span>
+        <p>{{ request.message }}</p>
+        </div>
+      {% endfor %}
+        </div>
+  </div>
+</div>
+
+
+<div class="card  col-sm-6 col-lg-2 m-2">
+  <div class="" style="padding: 5px; width: 100%">
+  
+    <div class="card-body">
+    <h3 class="card-title">Blood</h3>
+    {% for post in posts %}
+    <p>{{ post.date_posted }}</p>
+      <div >
+        <span class="badge-primary py-1 small px-2 rounded mb-3 d-inline-block">Donated</span>
+        <p>{{ post.content }}</p>
+        </div>
+      {% endfor %}
+        </div>
+  </div>
+</div>
+
+
+<div class="card  col-sm-6 col-lg-3 m-4" style="padding: 5px; width: 100%">
+  
+    <div class="card-body">
+    <h3 class="card-title">Reviews</h3>
+    <p class="card-text text-center">Reviews go here</p>
+    <a href="#" class="card-link">read more</a>
+   
+  </div>
+
+</div>
+
+
+</div>
+</div>
+
+  </body>
+  {% endblock content %}
+        {% block footer %}
+        {% include 'footer.html' %}
+        {% endblock footer %}

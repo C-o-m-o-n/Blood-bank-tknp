@@ -142,7 +142,16 @@ with app.app_context():
     reviews = Reviews.query.all()
     return render_template("index.html", events=events[-2:], reviews=reviews, current_user=current_user )
   
-
+  #the homepage
+  @app.route('/admin')
+  def admin():
+    users = Users.query.all()
+    requests = Requests.query.all()
+    posts = BlogPost.query.all()
+    events = Events.query.all()
+    reviews = Reviews.query.all()
+    return render_template("admin.html", users=users, posts=posts, events=events, reviews=reviews, requests=requests, current_user=current_user )
+  
   @app.route('/events')
   def events():
     events = Events.query.all()
