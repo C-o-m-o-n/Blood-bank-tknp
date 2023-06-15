@@ -112,6 +112,19 @@ class Users(db.Model,UserMixin):
   likes = db.relationship('Likes', backref='liker')
   comments = db.relationship('Comments', backref='comenter')
   
+#define the Admin table
+# class Admin(db.Model,UserMixin):
+#   id = db.Column(db.Integer, primary_key=True)
+#   username = db.Column(db.String(250))
+#   email = db.Column(db.String(250))
+#   first_name = db.Column(db.String(256))
+#   last_name = db.Column(db.String(256))
+#   phone = db.Column(db.String(256))
+#   password = db.Column(db.String(256))
+#   profile_pic = db.Column(db.String(250), default='user.png')
+#   pic_file_path = db.Column(db.String(256))
+
+
 # define comments table
 class Comments(db.Model, UserMixin):
   id = db.Column(db.Integer, primary_key=True)
@@ -146,11 +159,36 @@ with app.app_context():
   @app.route('/admin')
   def admin():
     users = Users.query.all()
+    blood = BlogPost.query.all()
     requests = Requests.query.all()
     posts = BlogPost.query.all()
     events = Events.query.all()
     reviews = Reviews.query.all()
-    return render_template("admin.html", users=users, posts=posts, events=events, reviews=reviews, requests=requests, current_user=current_user )
+
+    #get the users that has donated blood
+    donations = BlogPost.query.all()
+    donors = []
+    for donation in donations:
+      if donation.poster != None:
+        donors.append(donation.poster)
+    all_users = len(users)
+    all_requests = len(requests)
+    all_donors = len(donors)
+    all_events = len(events)
+    all_blood = len(blood)
+    return render_template(
+      "admin.html",
+      users=users,
+      posts=posts,
+      events=events,
+      reviews=reviews,
+      requests=requests,
+      all_users=all_users,
+      all_donors=all_donors,
+      all_requests=all_requests,
+      all_events=all_events,
+      all_blood=all_blood,
+      current_user=current_user )
   
   @app.route('/events')
   def events():
@@ -188,7 +226,6 @@ with app.app_context():
       elif not blood_type:
         flash("please enter Your blood type", 'error')
         return redirect(url_for('index'))
-    
     
     return(render_template("request.html"))
     
