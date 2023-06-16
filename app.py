@@ -12,6 +12,12 @@ from sqlalchemy import MetaData
 from flask_migrate import Migrate
 from flask_socketio import SocketIO, send, emit, join_room, leave_room
 
+#imports for sending emails to the users 
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+
+
 #initialise Flask
 app = Flask(__name__)
 #old sqlite database
@@ -46,6 +52,16 @@ login_manager.login_message_category = 'info'
 login_manager.init_app(app)
 #default Column id
   
+
+
+#setup smtp server
+sender = 'comon928@gmail.com'
+password = 'knscyyvmxmaalyfp'
+server = smtplib.SMTP('smtp.gmail.com', 587)
+server.starttls()
+server.login(sender, password)
+
+
 #define the Donations table
 class BlogPost(db.Model,UserMixin):
   id = db.Column(db.Integer, primary_key=True)
@@ -206,15 +222,37 @@ with app.app_context():
   @app.route('/request_blood', methods=['GET','POST'])
   @login_required
   def request_blood():
+
     if request.method == "POST":
       blood_type = request.form['blood_type']
       content = request.form['content']
       poster = current_user.id
       if content:
         request_blood = Requests(message=content, poster_id=poster, blood_type=blood_type, date_posted=datetime.now())
+        
+        #send confirmation email
+        user = Users.query.filter_by(id=poster).first()
+        recipient = user.email
+        subject = "blood donation request confirmation."
+        body = f"""
+        hello {user.username} this email is coming from
+        tknpbloodbank to confirm that your blood request is successfull.
+        we will try our best to find you a donor. Remember the following
+        code because it will be used as your id when a donor is found: rqfsf6wefys62w27t7sddd2e
+        """
+        msg = MIMEMultipart()
+        msg['From'] = sender
+        msg['To'] = recipient
+        msg['Subject'] = subject
+        msg.attach(MIMEText(body, 'plain'))
+        text = msg.as_string()
+        server.sendmail(sender, recipient, text)
+        server.quit()
+
         db.create_all()
         db.session.add(request_blood)
-        db.session.commit()      
+        db.session.commit()
+
       elif  not content:
         request_blood = Requests(message="no message", poster_id=poster, blood_type=blood_type, date_posted=datetime.now())
         db.create_all()
