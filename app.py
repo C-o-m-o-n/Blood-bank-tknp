@@ -249,9 +249,42 @@ with app.app_context():
         server.sendmail(sender, recipient, text)
         server.quit()
 
+        #send the email to all users
+
+        users =Users.query.all()
+        requests = Requests.query.all()
+        recipients_name = []
+        recipients_email = []
+        for user in users:
+          recipients_name.append(user.username)
+          recipients_email.append(user.email)
+
+        all_user_subject = "blood donation request notification."
+        all_users_body = f"""
+        hello {user.username} this email is coming from
+        tknpbloodbank to notify you  that a user with blood type {blood_type} is in urgent need of blood.
+        """
+
+        for recipient in recipients_email:
+          #setup smtp server
+          sender = 'comon928@gmail.com'
+          password = 'knscyyvmxmaalyfp'
+          server = smtplib.SMTP('smtp.gmail.com', 587)
+          server.starttls()
+          server.login(sender, password)
+          msg = MIMEMultipart()
+          msg['From'] = sender
+          msg['To'] = recipient
+          msg['Subject'] = all_user_subject
+          msg.attach(MIMEText(all_users_body, 'plain'))
+          text = msg.as_string()
+          server.sendmail(sender, recipient, text)
+          server.quit()        
         db.create_all()
         db.session.add(request_blood)
         db.session.commit()
+
+
 
       elif  not content:
         request_blood = Requests(message="no message", poster_id=poster, blood_type=blood_type, date_posted=datetime.now())
