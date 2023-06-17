@@ -12,10 +12,8 @@ from sqlalchemy import MetaData
 from flask_migrate import Migrate
 from flask_socketio import SocketIO, send, emit, join_room, leave_room
 
+from send_mail import mail_sender
 #imports for sending emails to the users 
-import smtplib
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
 
 
 #initialise Flask
@@ -51,15 +49,6 @@ login_manager.login_view = 'login'
 login_manager.login_message_category = 'info'
 login_manager.init_app(app)
 #default Column id
-  
-
-
-#setup smtp server
-sender = 'comon928@gmail.com'
-password = 'knscyyvmxmaalyfp'
-server = smtplib.SMTP('smtp.gmail.com', 587)
-server.starttls()
-server.login(sender, password)
 
 
 #define the Donations table
@@ -169,7 +158,10 @@ with app.app_context():
     #posts = BlogPost.query.all()
     events = Events.query.all()
     reviews = Reviews.query.all()
-    return render_template("index.html", events=events[-2:], reviews=reviews, current_user=current_user )
+    return render_template("index.html",
+      events=events[-2:],
+      reviews=reviews,
+      current_user=current_user )
   
   #the homepage
   @app.route('/admin')
@@ -209,7 +201,9 @@ with app.app_context():
   @app.route('/events')
   def events():
     events = Events.query.all()
-    return render_template("events.html", events=events, current_user=current_user )
+    return render_template("events.html",
+      events=events,
+      current_user=current_user )
   
   
   #the privacy page
@@ -228,58 +222,38 @@ with app.app_context():
       content = request.form['content']
       poster = current_user.id
       if content:
-        request_blood = Requests(message=content, poster_id=poster, blood_type=blood_type, date_posted=datetime.now())
+        request_blood = Requests(
+          message=content,
+          poster_id=poster,
+          blood_type=blood_type,
+          date_posted=datetime.now())
         
         #send confirmation email
+        #setup smtp server
         user = Users.query.filter_by(id=poster).first()
         recipient = user.email
-        subject = "blood donation request confirmation."
+
         body = f"""
         hello {user.username} this email is coming from
         tknpbloodbank to confirm that your blood request is successfull.
         we will try our best to find you a donor. Remember the following
         code because it will be used as your id when a donor is found: rqfsf6wefys62w27t7sddd2e
         """
-        msg = MIMEMultipart()
-        msg['From'] = sender
-        msg['To'] = recipient
-        msg['Subject'] = subject
-        msg.attach(MIMEText(body, 'plain'))
-        text = msg.as_string()
-        server.sendmail(sender, recipient, text)
-        server.quit()
+
+        mail_sender.send_mail('comon928@gmail.com', "blood donation request confirmation.", body)
 
         #send the email to all users
 
-        users =Users.query.all()
-        requests = Requests.query.all()
-        recipients_name = []
-        recipients_email = []
+        users = Users.query.all()
+        
         for user in users:
-          recipients_name.append(user.username)
-          recipients_email.append(user.email)
-
-        all_user_subject = "blood donation request notification."
-        all_users_body = f"""
-        hello {user.username} this email is coming from
-        tknpbloodbank to notify you  that a user with blood type {blood_type} is in urgent need of blood.
-        """
-
-        for recipient in recipients_email:
-          #setup smtp server
-          sender = 'comon928@gmail.com'
-          password = 'knscyyvmxmaalyfp'
-          server = smtplib.SMTP('smtp.gmail.com', 587)
-          server.starttls()
-          server.login(sender, password)
-          msg = MIMEMultipart()
-          msg['From'] = sender
-          msg['To'] = recipient
-          msg['Subject'] = all_user_subject
-          msg.attach(MIMEText(all_users_body, 'plain'))
-          text = msg.as_string()
-          server.sendmail(sender, recipient, text)
-          server.quit()        
+          recipient_name = user.username
+          recipient_email = user.email
+          body = f"""
+              hello {user.username} this email is coming from
+              tknpbloodbank to notify you  that a user with blood type {blood_type} is in urgent need of blood.
+              """
+        mail_sender.send_mail('comon928@gmail.com', "blood donation request notification.", body)
         db.create_all()
         db.session.add(request_blood)
         db.session.commit()

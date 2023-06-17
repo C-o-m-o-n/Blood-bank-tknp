@@ -18,14 +18,11 @@ class MailSender:
         msg.attach(MIMEText(body, 'plain'))
         text = msg.as_string()
         self.server.sendmail(self.sender, recipient, text)
-
-    def __del__(self):
-        self.server.quit()
+        # self.server.quit()
 
 # Example usage:
 sender_email = 'comon928@gmail.com'
 sender_password = 'knscyyvmxmaalyfp'
 
 mail_sender = MailSender(sender_email, sender_password)
-mail_sender.send_mail('comon928@gmail.com', 'bloodbank Test Email', 'This is a test email sent from Python.')
 
