@@ -2,6 +2,9 @@
 
 Welcome to the Kisumu National Polytechnic Blood Bank project! This is an open-source initiative aimed at promoting blood donation and saving lives through a user-friendly website.
 
+### Visit the website 
+https://tknpbloodbank.com/
+
 ## Table of Contents
 - [Introduction](#introduction)
 - [Features](#features)
