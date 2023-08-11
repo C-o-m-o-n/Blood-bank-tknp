@@ -24,19 +24,20 @@ The Kisumu National Polytechnic Blood Bank project!  is a non-profit organizatio
 ## Installation
 To run this project locally, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/your-username/lifesaver-project.git`
-2. Navigate to the project directory: `cd lifesaver-project`
-3. Install the required dependencies: `npm install`
-4. Start the local development server: `npm start`
-5. Access the website at: `http://localhost:3000`
+1. Clone the repository: `git clone https://github.com/C-o-m-o-n/Blood-bank-tknp`
+2. Navigate to the project directory: `cd blood-bank-tknp`
+3. activate the virtualenvironment: `source env/bin/activate`
+4. Install the required dependencies: `pip install -r requirements.txt`
+5. Start the local development server: `python app.py`
+6. Access the website at: `http://localhost:5000`
 
 ## Usage
-Once the project is set up and running, you can start exploring the various features of the LifeSaver website. Create an account to access personalized features such as tracking your donation history, receiving updates, and engaging with the community.
+Once the project is set up and running, you can start exploring the various features of the bloodbank website. Create an account to access personalized features such as tracking your donation history, receiving updates, and engaging with the community.
 
 Feel free to provide feedback, report any issues or suggest improvements by opening an issue in this repository.
 
 ## Contributing
-We welcome contributions from the community to enhance the LifeSaver project. If you would like to contribute, please follow these steps:
+We welcome contributions from the community to enhance the bloodbank project. If you would like to contribute, please follow these steps:
 
 1. Fork the repository.
 2. Create a new branch for your feature or bug fix: `git checkout -b feature/your-feature-name`.
@@ -44,7 +45,7 @@ We welcome contributions from the community to enhance the LifeSaver project. If
 4. Push the changes to your branch: `git push origin feature/your-feature-name`.
 5. Open a pull request, and we will review your changes.
 
-Thank you for your interest in contributing to the LifeSaver project!
+Thank you for your interest in contributing to the bloodbank project!
 
 ## License
 This project is licensed under the [MIT License](LICENSE). Feel free to modify and distribute it as per the license terms.
