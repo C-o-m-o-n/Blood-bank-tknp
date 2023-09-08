@@ -1,4 +1,4 @@
-# The Kisumu National Polytechnic Blood Bank: Onlone Blood Donation Website
+# The Kisumu National Polytechnic Blood Bank: Online Blood Donation Website
 
 Welcome to the Kisumu National Polytechnic Blood Bank project! This is an open-source initiative aimed at promoting blood donation and saving lives through a user-friendly website.
 
