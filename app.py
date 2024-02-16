@@ -325,22 +325,21 @@ with app.app_context():
   @app.route('/add_review', methods=['GET', 'POST'])
   @login_required
   def add_review():
-	  if request.method == 'POST':
-		  content = request.form['content']
-		  review_pic = request.files['review_pic']
-		  poster = current_user.id
-		  if not review_pic:
-			  flash("please enter an image", "error")			  
-		  elif review_pic:
-			  review_img = save_post_img(review_pic)
-			  review = Reviews(date_posted=datetime.now(), content=content, poster_id=poster,review_img=review_img )
-			  #Save the event to the database
-			  db.session.add(review)
-			  db.session.commit()
-			  flash("thanks for adding your review!", "succes")
-			  return redirect(url_for('index'))
-		
-	  return render_template('add_review.html')
+    if request.method == 'POST':
+      content = request.form['content']
+      review_pic = request.files['review_pic']
+      poster = current_user.id
+      if not review_pic:
+        flash("please enter an image", "error")
+      elif review_pic:
+        review_img = save_post_img(review_pic)
+        review = Reviews(date_posted=datetime.now(), content=content, poster_id=poster,review_img=review_img )
+        #Save the event to the database
+        db.session.add(review)
+        db.session.commit()
+        flash("thanks for adding your review!", "succes")
+        return redirect(url_for('index'))
+      return render_template('add_review.html')
 			 
 			 
 			 
